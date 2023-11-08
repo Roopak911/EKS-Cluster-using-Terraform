@@ -1,1 +1,1 @@
-# ELS-Cluster-using-Terraform
+# EKS-Cluster-using-Terraform
