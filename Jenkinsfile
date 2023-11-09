@@ -33,6 +33,11 @@ pipeline {
                 bash kubectl.sh
                 '''
             }
+        }
+        stage('terraform destroy') {
+            steps {
+                sh 'terraform destroy'
+            }
         }                     
     }
 }
