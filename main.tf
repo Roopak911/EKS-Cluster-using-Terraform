@@ -9,8 +9,12 @@ module "vpc" {
 
 
 module "EKS_module" {
-  source          = "./EKS-Cluster_module"
-  iam-role        = "eks-cluster-demo"
-  cluster_name    = "demo-eks"
-  node_group_name = "eks-nodes"
+  source           = "./EKS-Cluster_module"
+  iam-role         = "eks-cluster-demo"
+  cluster_name     = "demo-eks"
+  node_group_name  = "eks-nodes"
+  public_subnet_1  = module.vpc.public-subnet-id-1
+  public_subnet_2  = module.vpc.public-subnet-id-2
+  private_subnet_1 = module.vpc.private-subnet-id-1
+  private_subnet_2 = module.vpc.private-subnet-id-2
 }

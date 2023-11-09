@@ -29,10 +29,10 @@ resource "aws_eks_cluster" "demo" {
 
   vpc_config {
     subnet_ids = [
-      aws_subnet.public_subnet[0].id,
-      aws_subnet.public_subnet[1].id,
-      aws_subnet.private_subnet[0].id,
-      aws_subnet.private_subnet[1].id
+      var.public_subnet_1,
+      var.public_subnet_2,
+      var.private_subnet_1,
+      var.private_subnet_2
     ]
   }
 
@@ -77,12 +77,13 @@ resource "aws_eks_node_group" "private-nodes" {
   node_role_arn   = aws_iam_role.nodes.arn
 
   subnet_ids = [
-    aws_subnet.private_subnet[0].id,
-    aws_subnet.private_subnet[1].id
+    var.private_subnet_1,
+    var.private_subnet_2
   ]
 
   capacity_type  = "ON_DEMAND"
   instance_types = ["t3.small"]
+  disk_size      = 10
 
   scaling_config {
     desired_size = 1
