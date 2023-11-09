@@ -44,6 +44,7 @@ resource "aws_eks_cluster" "demo" {
 resource "aws_iam_role" "nodes" {
   name = var.node_group_name
 
+
   assume_role_policy = jsonencode({
     Statement = [{
       Action = "sts:AssumeRole"
@@ -86,7 +87,7 @@ resource "aws_eks_node_group" "private-nodes" {
   disk_size      = 10
 
   scaling_config {
-    desired_size = 1
+    desired_size = 2
     max_size     = 5
     min_size     = 1
   }
