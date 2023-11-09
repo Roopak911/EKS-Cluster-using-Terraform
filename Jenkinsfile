@@ -13,8 +13,8 @@ pipeline {
         stage('run terraform') {
             steps {
                 sh '''
-		sudo cd /var/lib/jenkins/workspace/aws-infra/
-		terraform init
+		        sudo cd /var/lib/jenkins/workspace/aws-infra/
+		        terraform init
                 terraform plan
                 terraform apply --auto-approve
                 '''
