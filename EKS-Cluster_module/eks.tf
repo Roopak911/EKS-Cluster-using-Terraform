@@ -29,10 +29,10 @@ resource "aws_eks_cluster" "demo" {
 
   vpc_config {
     subnet_ids = [
-      module.vpc.public-subnet-id-1,
-      module.vpc.public-subnet-id-2,
-      module.vpc.private-subnet-id-1,
-      module.vpc.private-subnet-id-2
+      aws_subnet.public_subnet[0].id,
+      aws_subnet.public_subnet[1].id,
+      aws_subnet.private_subnet[0].id,
+      aws_subnet.private_subnet[1].id
     ]
   }
 
@@ -77,8 +77,8 @@ resource "aws_eks_node_group" "private-nodes" {
   node_role_arn   = aws_iam_role.nodes.arn
 
   subnet_ids = [
-    module.vpc.private-subnet-id-1,
-    module.vpc.private-subnet-id-2
+    aws_subnet.private_subnet[0].id,
+    aws_subnet.private_subnet[1].id
   ]
 
   capacity_type  = "ON_DEMAND"
