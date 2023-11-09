@@ -20,5 +20,19 @@ pipeline {
                 '''
             }
         }
+        stage('install eksctl') {
+            steps {
+                sh '''
+                bash eksctl.sh
+                '''
+            }
+        }
+        stage('install kubectl') {
+            steps {
+                sh '''
+                bash kubectl.sh
+                '''
+            }
+        }                     
     }
 }
