@@ -9,8 +9,8 @@ module "vpc" {
 
 
 module "EKS_module" {
-  source          = "./EKS_module"
+  source          = "./EKS-Cluster_module"
   iam-role        = "eks-cluster-demo"
   cluster_name    = "demo-eks"
-  node_group_name = "eks-node-group-nodes"
+  node_group_name = "eks-nodes"
 }
